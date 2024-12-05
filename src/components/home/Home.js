@@ -57,42 +57,59 @@ const Home = () => {
       {/* Hero Section */}
       <Box
         sx={{
-          background: `linear-gradient(45deg, ${theme.palette.primary.main} 30%, ${theme.palette.primary.dark} 90%)`,
-          color: 'white',
-          py: 8,
-          mb: 6,
+          background: theme.palette.mode === 'dark'
+            ? `linear-gradient(45deg, ${theme.palette.primary.dark} 30%, ${theme.palette.primary.main} 90%)`
+            : `linear-gradient(45deg, ${theme.palette.custom.beige} 0%, ${theme.palette.custom.beige} 100%)`,
+          color: theme.palette.mode === 'dark' ? 'white' : theme.palette.primary.main,
+          py: { xs: 6, md: 12 },
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
         <Container maxWidth="lg">
-          <Typography variant="h3" component="h1" gutterBottom>
-            Professional Roofing Services
-          </Typography>
-          <Typography variant="h5" component="h2" sx={{ mb: 4 }}>
-            Expert roof repairs, maintenance, and installations
-          </Typography>
-          <Button
-            variant="contained"
-            color="secondary"
-            size="large"
-            onClick={handleSchedule}
-            sx={{
-              py: 2,
-              px: 4,
-              fontSize: '1.2rem',
-              backgroundColor: 'white',
-              color: theme.palette.primary.main,
-              '&:hover': {
-                backgroundColor: theme.palette.grey[100],
-              },
-            }}
-          >
-            Schedule Free Estimate
-          </Button>
+          <Box sx={{ maxWidth: 'md', position: 'relative', zIndex: 1 }}>
+            <Typography 
+              variant="h3" 
+              component="h1" 
+              gutterBottom
+              sx={{
+                fontWeight: 700,
+                color: theme.palette.primary.main,
+                mb: 3,
+              }}
+            >
+              Professional Roofing Services
+            </Typography>
+            <Typography 
+              variant="h5" 
+              component="h2" 
+              sx={{ 
+                mb: 4,
+                color: theme.palette.text.secondary,
+                maxWidth: 'sm',
+              }}
+            >
+              Expert roof repairs, maintenance, and installations with quality guarantee
+            </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              onClick={handleSchedule}
+              sx={{
+                py: 2,
+                px: 4,
+                fontSize: '1.2rem',
+              }}
+            >
+              Schedule Free Estimate
+            </Button>
+          </Box>
         </Container>
       </Box>
 
       {/* Services Section */}
-      <Container maxWidth="lg" sx={{ mb: 8 }}>
+      <Container maxWidth="lg" sx={{ py: { xs: 6, md: 8 } }}>
         <Grid container spacing={4}>
           {services.map((service) => {
             const Icon = service.icon;
@@ -103,14 +120,17 @@ const Home = () => {
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-                    transition: 'transform 0.2s ease-in-out',
+                    transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
                     '&:hover': {
                       transform: 'translateY(-4px)',
                       boxShadow: theme.shadows[4],
                     },
+                    bgcolor: theme.palette.mode === 'dark' 
+                      ? 'background.paper' 
+                      : '#ffffff',
                   }}
                 >
-                  <CardContent sx={{ flexGrow: 1 }}>
+                  <CardContent sx={{ flexGrow: 1, textAlign: 'center' }}>
                     <Box
                       sx={{
                         display: 'flex',
@@ -121,7 +141,8 @@ const Home = () => {
                       <Icon
                         sx={{
                           fontSize: 48,
-                          color: theme.palette.primary.main,
+                          color: theme.palette.secondary.main,
+                          mb: 2,
                         }}
                       />
                     </Box>
@@ -129,19 +150,31 @@ const Home = () => {
                       gutterBottom
                       variant="h5"
                       component="h3"
-                      align="center"
+                      sx={{
+                        fontWeight: 600,
+                        color: theme.palette.primary.main,
+                      }}
                     >
                       {service.title}
                     </Typography>
-                    <Typography align="center" color="text.secondary">
+                    <Typography 
+                      color="text.secondary"
+                      sx={{ mb: 2 }}
+                    >
                       {service.description}
                     </Typography>
                   </CardContent>
-                  <CardActions sx={{ justifyContent: 'center', pb: 2 }}>
+                  <CardActions sx={{ justifyContent: 'center', pb: 3 }}>
                     <Button
                       variant="outlined"
                       color="primary"
                       onClick={handleSchedule}
+                      sx={{
+                        borderWidth: 2,
+                        '&:hover': {
+                          borderWidth: 2,
+                        },
+                      }}
                     >
                       {service.action}
                     </Button>

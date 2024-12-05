@@ -4,97 +4,68 @@ const getTheme = (darkMode) => createTheme({
   palette: {
     mode: darkMode ? 'dark' : 'light',
     primary: {
-      main: '#1976d2',
-      light: '#42a5f5',
-      dark: '#1565c0',
+      main: '#2C5530', // Dark green
+      light: '#3E7745',
+      dark: '#1A331D',
+      contrastText: '#ffffff',
     },
     secondary: {
-      main: darkMode ? '#1976d2' : '#3F51B5',
-      light: '#7986CB',
-      dark: '#303F9F',
-      contrastText: darkMode ? '#ffffff' : '#ffffff',
+      main: '#D4A373', // Muted orange/terra cotta
+      light: '#E6B794',
+      dark: '#B88B5E',
+      contrastText: '#000000',
     },
     background: {
-      default: darkMode ? '#121212' : '#f5f5f5',
+      default: darkMode ? '#121212' : '#FEFAE0', // Light beige in light mode
       paper: darkMode ? '#1e1e1e' : '#ffffff',
     },
     text: {
-      primary: darkMode ? '#ffffff' : '#1A1A1A',
-      secondary: darkMode ? '#B0B0B0' : '#666666',
+      primary: darkMode ? '#ffffff' : '#2C5530', // Dark green as primary text in light mode
+      secondary: darkMode ? '#D4A373' : '#B88B5E', // Muted orange as secondary text
     },
-  },
-  shape: {
-    borderRadius: 16,
+    // Custom colors for specific components
+    custom: {
+      beige: '#FEFAE0',
+      lightGreen: '#606C38',
+      darkGreen: '#283618',
+      terracotta: '#D4A373',
+      darkTerracotta: '#B88B5E',
+    },
   },
   typography: {
-    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
-      fontSize: '2.5rem',
       fontWeight: 700,
-      lineHeight: 1.2,
+      color: '#2C5530', // Dark green
     },
     h2: {
-      fontSize: '2rem',
       fontWeight: 600,
-      lineHeight: 1.2,
+      color: '#2C5530',
     },
     h3: {
-      fontSize: '1.75rem',
       fontWeight: 600,
-      lineHeight: 1.2,
+      color: '#2C5530',
     },
     h4: {
-      fontSize: '1.5rem',
       fontWeight: 600,
-      lineHeight: 1.2,
+      color: '#2C5530',
     },
     h5: {
-      fontSize: '1.25rem',
       fontWeight: 500,
-      lineHeight: 1.2,
+      color: '#2C5530',
     },
     h6: {
-      fontSize: '1rem',
       fontWeight: 500,
-      lineHeight: 1.2,
+      color: '#2C5530',
     },
-    body1: {
-      fontSize: '1rem',
-      lineHeight: 1.5,
+    subtitle1: {
+      color: '#B88B5E', // Muted orange
     },
-    body2: {
-      fontSize: '0.875rem',
-      lineHeight: 1.5,
-    },
-    button: {
-      textTransform: 'none',
-      fontWeight: 500,
+    subtitle2: {
+      color: '#B88B5E',
     },
   },
   components: {
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: 8,
-          padding: '12px 24px',
-          fontSize: '1rem',
-          boxShadow: 'none',
-          '&:hover': {
-            boxShadow: 'none',
-          },
-          textTransform: 'none',
-          fontWeight: 500,
-        },
-        contained: {
-          '&:hover': {
-            boxShadow: 'none',
-          },
-          boxShadow: darkMode 
-            ? '0px 4px 12px rgba(0, 0, 0, 0.3)' 
-            : '0px 4px 12px rgba(0, 0, 0, 0.1)',
-        },
-      },
-    },
     MuiCard: {
       styleOverrides: {
         root: {
@@ -102,27 +73,83 @@ const getTheme = (darkMode) => createTheme({
           boxShadow: darkMode 
             ? '0px 4px 12px rgba(0, 0, 0, 0.3)' 
             : '0px 4px 12px rgba(0, 0, 0, 0.05)',
+          backgroundColor: darkMode ? '#1e1e1e' : '#ffffff',
         },
       },
     },
-    MuiPaper: {
+    MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 16,
-          backgroundImage: 'none',
+          borderRadius: 8,
+          textTransform: 'none',
+          fontWeight: 500,
+          padding: '10px 24px',
+        },
+        contained: {
           boxShadow: darkMode 
-            ? '0px 4px 20px rgba(0, 0, 0, 0.3)' 
-            : '0px 4px 20px rgba(0, 0, 0, 0.05)',
+            ? '0px 4px 12px rgba(0, 0, 0, 0.3)' 
+            : '0px 4px 12px rgba(0, 0, 0, 0.1)',
+          '&.MuiButton-containedPrimary': {
+            backgroundColor: '#2C5530',
+            '&:hover': {
+              backgroundColor: '#3E7745',
+            },
+          },
+          '&.MuiButton-containedSecondary': {
+            backgroundColor: '#D4A373',
+            color: '#000000',
+            '&:hover': {
+              backgroundColor: '#B88B5E',
+            },
+          },
+        },
+        outlined: {
+          borderColor: darkMode ? '#D4A373' : '#2C5530',
+          color: darkMode ? '#D4A373' : '#2C5530',
+          '&:hover': {
+            borderColor: darkMode ? '#B88B5E' : '#3E7745',
+            backgroundColor: darkMode ? 'rgba(212, 163, 115, 0.1)' : 'rgba(44, 85, 48, 0.1)',
+          },
         },
       },
     },
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: darkMode ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)',
+          backgroundColor: darkMode 
+            ? 'rgba(18, 18, 18, 0.9)' 
+            : 'rgba(254, 250, 224, 0.9)', // Semi-transparent beige in light mode
           backdropFilter: 'blur(20px)',
           boxShadow: 'none',
-          borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
+          borderBottom: darkMode 
+            ? '1px solid rgba(212, 163, 115, 0.1)' 
+            : '1px solid rgba(44, 85, 48, 0.1)',
+        },
+      },
+    },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: darkMode ? '#121212' : '#FEFAE0',
+          borderRight: darkMode 
+            ? '1px solid rgba(212, 163, 115, 0.1)' 
+            : '1px solid rgba(44, 85, 48, 0.1)',
+        },
+      },
+    },
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          '&.Mui-selected': {
+            backgroundColor: darkMode 
+              ? 'rgba(212, 163, 115, 0.15)' 
+              : 'rgba(44, 85, 48, 0.15)',
+            '&:hover': {
+              backgroundColor: darkMode 
+                ? 'rgba(212, 163, 115, 0.25)' 
+                : 'rgba(44, 85, 48, 0.25)',
+            },
+          },
         },
       },
     },
