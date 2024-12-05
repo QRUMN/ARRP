@@ -4,20 +4,20 @@ const theme = createTheme({
   palette: {
     mode: 'light',
     primary: {
-      main: '#2196F3',
-      light: '#64B5F6',
-      dark: '#1976D2',
+      main: '#1976d2',
+      light: '#42a5f5',
+      dark: '#1565c0',
       contrastText: '#fff',
     },
     secondary: {
       main: '#3F51B5',
       light: '#7986CB',
       dark: '#303F9F',
-      contrastText: '#fff',
+      contrastText: '#ffffff',
     },
     background: {
-      default: '#F5F5F7',
-      paper: '#FFFFFF',
+      default: '#f5f5f5',
+      paper: '#ffffff',
     },
     text: {
       primary: '#1A1A1A',
@@ -36,7 +36,7 @@ const theme = createTheme({
     },
     h2: {
       fontSize: '2rem',
-      fontWeight: 700,
+      fontWeight: 600,
       lineHeight: 1.2,
     },
     h3: {
@@ -51,12 +51,12 @@ const theme = createTheme({
     },
     h5: {
       fontSize: '1.25rem',
-      fontWeight: 600,
+      fontWeight: 500,
       lineHeight: 1.2,
     },
     h6: {
       fontSize: '1rem',
-      fontWeight: 600,
+      fontWeight: 500,
       lineHeight: 1.2,
     },
     body1: {
@@ -69,33 +69,36 @@ const theme = createTheme({
     },
     button: {
       textTransform: 'none',
-      fontWeight: 600,
+      fontWeight: 500,
     },
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 12,
+          borderRadius: 8,
           padding: '12px 24px',
           fontSize: '1rem',
           boxShadow: 'none',
           '&:hover': {
             boxShadow: 'none',
           },
+          textTransform: 'none',
+          fontWeight: 500,
         },
         contained: {
           '&:hover': {
             boxShadow: 'none',
           },
+          boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
         },
       },
     },
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 16,
-          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
+          borderRadius: 12,
+          boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)',
         },
       },
     },
