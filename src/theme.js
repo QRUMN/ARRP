@@ -2,78 +2,91 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
+    mode: 'light',
     primary: {
-      main: '#A63F03', // Warm, professional brown
-      light: '#BF4904',
-      dark: '#8C3502',
+      main: '#2196F3',
+      light: '#64B5F6',
+      dark: '#1976D2',
+      contrastText: '#fff',
     },
     secondary: {
-      main: '#2B4162', // Professional navy blue
-      light: '#385480',
-      dark: '#1E2D44',
+      main: '#3F51B5',
+      light: '#7986CB',
+      dark: '#303F9F',
+      contrastText: '#fff',
     },
     background: {
-      default: '#FFFFFF',
-      paper: '#F5F5F5',
+      default: '#F5F5F7',
+      paper: '#FFFFFF',
     },
     text: {
-      primary: '#333333',
+      primary: '#1A1A1A',
       secondary: '#666666',
     },
   },
+  shape: {
+    borderRadius: 16,
+  },
   typography: {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
-      fontSize: '3.5rem',
+      fontSize: '2.5rem',
       fontWeight: 700,
       lineHeight: 1.2,
     },
     h2: {
-      fontSize: '2.75rem',
-      fontWeight: 600,
-      lineHeight: 1.3,
+      fontSize: '2rem',
+      fontWeight: 700,
+      lineHeight: 1.2,
     },
     h3: {
-      fontSize: '2.2rem',
+      fontSize: '1.75rem',
       fontWeight: 600,
-      lineHeight: 1.3,
+      lineHeight: 1.2,
     },
     h4: {
-      fontSize: '1.75rem',
-      fontWeight: 500,
-      lineHeight: 1.4,
+      fontSize: '1.5rem',
+      fontWeight: 600,
+      lineHeight: 1.2,
     },
     h5: {
-      fontSize: '1.5rem',
-      fontWeight: 500,
-      lineHeight: 1.4,
+      fontSize: '1.25rem',
+      fontWeight: 600,
+      lineHeight: 1.2,
     },
     h6: {
-      fontSize: '1.25rem',
-      fontWeight: 500,
-      lineHeight: 1.4,
+      fontSize: '1rem',
+      fontWeight: 600,
+      lineHeight: 1.2,
     },
     body1: {
       fontSize: '1rem',
-      lineHeight: 1.6,
+      lineHeight: 1.5,
+    },
+    body2: {
+      fontSize: '0.875rem',
+      lineHeight: 1.5,
     },
     button: {
       textTransform: 'none',
-      fontWeight: 500,
+      fontWeight: 600,
     },
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: 8,
-          padding: '10px 24px',
+          borderRadius: 12,
+          padding: '12px 24px',
           fontSize: '1rem',
-        },
-        contained: {
           boxShadow: 'none',
           '&:hover': {
-            boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+            boxShadow: 'none',
+          },
+        },
+        contained: {
+          '&:hover': {
+            boxShadow: 'none',
           },
         },
       },
@@ -81,15 +94,26 @@ const theme = createTheme({
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 12,
-          boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)',
+          borderRadius: 16,
+          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
         },
       },
     },
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: 12,
+          borderRadius: 16,
+          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
+        },
+      },
+    },
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          backdropFilter: 'blur(20px)',
+          boxShadow: 'none',
+          borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
         },
       },
     },
