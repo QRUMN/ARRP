@@ -1,7 +1,7 @@
 [build]
   base = "/"
+  command = "CI= npm run build"
   publish = "build"
-  command = "npm run build"
 
 [build.environment]
   NODE_VERSION = "18.16.0"
@@ -9,11 +9,11 @@
 
 # Production context
 [context.production]
-  command = "npm run build"
+  command = "CI= npm run build"
 
 # Deploy Preview context
 [context.deploy-preview]
-  command = "npm run build"
+  command = "CI= npm run build"
 
 # Branch Deploy context
 [context.branch-deploy]
