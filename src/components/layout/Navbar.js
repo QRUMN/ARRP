@@ -13,6 +13,7 @@ import {
   ListItemIcon,
   ListItemText,
   ListItemButton,
+  Tooltip,
 } from '@mui/material';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -21,6 +22,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import BuildIcon from '@mui/icons-material/Build';
 import InfoIcon from '@mui/icons-material/Info';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { useThemeMode } from '../../contexts/ThemeContext';
 
 const menuItems = [
   { text: 'Home', icon: HomeIcon, path: '/' },
@@ -33,6 +37,7 @@ const Navbar = () => {
   const theme = useTheme();
   const location = useLocation();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const { darkMode, toggleDarkMode } = useThemeMode();
 
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -89,7 +94,16 @@ const Navbar = () => {
   );
 
   return (
-    <AppBar position="sticky" color="inherit">
+    <AppBar 
+      position="sticky" 
+      color="inherit" 
+      sx={{
+        backdropFilter: 'blur(20px)',
+        backgroundColor: theme.palette.mode === 'dark' 
+          ? 'rgba(0, 0, 0, 0.8)' 
+          : 'rgba(255, 255, 255, 0.8)',
+      }}
+    >
       <Container maxWidth="lg">
         <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
           <IconButton
@@ -115,16 +129,28 @@ const Navbar = () => {
             RoofPro
           </Typography>
 
-          <IconButton
-            size="large"
-            edge="end"
-            color="inherit"
-            aria-label="account"
-            component={RouterLink}
-            to="/profile"
-          >
-            <AccountCircleIcon />
-          </IconButton>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Tooltip title={darkMode ? 'Light mode' : 'Dark mode'}>
+              <IconButton
+                size="large"
+                color="inherit"
+                onClick={toggleDarkMode}
+                sx={{ mr: 1 }}
+              >
+                {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+              </IconButton>
+            </Tooltip>
+            <IconButton
+              size="large"
+              edge="end"
+              color="inherit"
+              aria-label="account"
+              component={RouterLink}
+              to="/profile"
+            >
+              <AccountCircleIcon />
+            </IconButton>
+          </Box>
         </Toolbar>
       </Container>
 

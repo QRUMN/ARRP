@@ -3,12 +3,16 @@ import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import theme from './theme';
+import getTheme from './theme';
 import Navbar from './components/layout/Navbar';
 import Home from './components/home/Home';
 import Services from './components/services/Services';
+import { ThemeModeProvider, useThemeMode } from './contexts/ThemeContext';
 
-function App() {
+const ThemedApp = () => {
+  const { darkMode } = useThemeMode();
+  const theme = getTheme(darkMode);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -27,6 +31,14 @@ function App() {
         </Box>
       </Box>
     </ThemeProvider>
+  );
+};
+
+function App() {
+  return (
+    <ThemeModeProvider>
+      <ThemedApp />
+    </ThemeModeProvider>
   );
 }
 
